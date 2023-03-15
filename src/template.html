@@ -7,7 +7,32 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-    <h3>Template test</h3>
+    <header>
+        <h1>TO-DO LIST</h1>
+        <img id="todoLogo" alt="todo list icon" width="52px">
+    </header>
+
+    <div class="sidebar">
+        <div id="home">Home</div>
+        <div id="today">Today</div>
+        <div id="week">Week</div>
+        <div id="projects">Projects
+            <ul></ul>
+        </div>
+
+    </div>
+
+
+    <div class="main">
+        <div class="item">
+           <input type="checkbox" name="todo" id=""> 
+           <p>Item Name</p>
+           <button>Details</button>
+           <p>Date</p>
+           
+        </div>
+
+    </div>
     
 </body>
 </html>
