@@ -9,7 +9,8 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     devServer: {
-        static:'./dist'
+        static:'./dist',
+        port:3000
     },
 
     plugins:[
@@ -33,8 +34,17 @@ module.exports = {
     module:{
         rules:[
             {
+                test:/\.js/,
+                use:{
+                    loader:'babel-loader',
+                    options:{
+                        presets:['@babel/preset-env']
+                    }
+                }
+            },
+            {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test:/\.(png|svg|jpg|jpeg|gif)$/i,
