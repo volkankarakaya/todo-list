@@ -1,78 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Development</title>
-<script defer src="/runtime.bundle.js"></script><script defer src="/index.bundle.js"></script></head>
-<body>
-    <header>
-        <img id="todoLogo" alt="todo list icon" width="52px">
-      
-        
+  <script defer src="/runtime.bundle.js"></script><script defer src="/index.bundle.js"></script></head>
+  <body>
+    <header class="header">
+      <img id="todoLogo" alt="todo list icon" width="52px" />
 
-        <h1>TO-DO LIST</h1>
-
+      <h1>TO-DO LIST</h1>
     </header>
 
     <div class="sidebar">
-        <ul id="home">Home</ul>
-        <ul id="today">Today</ul>
-        <ul id="week">Week</ul>
-        <ul id="projects">Projects
-            
-        </ul>
 
+        <h3>Home</h3>
+        <h3>Today</h3>
+        <h3>Week</h3>
+
+      <div class="projects">
+        <h3>Projects</h3>
+        <ul>
+          <li>test1</li>
+          <li>test2</li>
+          <li>test3</li>
+        </ul>
+      </div>
+    </div>
+    <div class="add-project-btn">
+        +
     </div>
 
-
     <div class="main">
+      <div class="item-container">
         <div class="item">
-           <div class="item-name">
-            <input type="checkbox" name="todo" id=""> 
-           <p>Item Name</p>
-           </div>
-           <div class="item-info">
+          <div class="item-name">
+            <input type="checkbox" name="todo" id="" />
+            <p>Item Name</p>
+          </div>
+          <div class="item-info">
             <button>Details</button>
             <p>11-02-2023</p>
             <i class="fa-regular fa-pen-to-square"></i>
             <i class="fa-solid fa-trash-can"></i>
-           </div>
-           
+          </div>
         </div>
-
+  
         <div class="item">
-            <div class="item-name">
-             <input type="checkbox" name="todo" id=""> 
+          <div class="item-name">
+            <input type="checkbox" name="todo" id="" />
             <p>Item Name</p>
-            </div>
-            <div class="item-info">
-             <button>Details</button>
+          </div>
+          <div class="item-info">
+            <button>Details</button>
             <p>11-02-2023</p>
             <i class="fa fa-regular fa-pen-to-square"></i>
             <i class="fa fa-solid fa-trash-can"></i>
-            </div>
-            
-         </div>
-
-         <div class="item">
-            <div class="item-name">
-             <input type="checkbox" name="todo" id=""> 
+          </div>
+        </div>
+  
+        <div class="item">
+          <div class="item-name">
+            <input type="checkbox" name="todo" id="" />
             <p>Item Name</p>
-            </div>
-            <div class="item-info">
-             <button>Details</button>
+          </div>
+          <div class="item-info">
+            <button>Details</button>
             <p>11-02-2023</p>
             <i class="fa fa-regular fa-pen-to-square"></i>
-            <i class="fa fa-solid fa-trash-can "></i>
-            </div>
-            
-         </div>
- 
- 
+            <i class="fa fa-solid fa-trash-can"></i>
+          </div>
+        </div>
+        <div class="new-item">
+          + Add new to-do
+        </div>
+      </div>
     </div>
-    
-</body>
+  </body>
 </html>

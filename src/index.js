@@ -8,3 +8,11 @@ import '../node_modules/@fortawesome/fontawesome-free/js/all.js';
 
 const todoImg = document.getElementById('todoLogo');
 todoImg.src = todoLogo;
+
+
+function TodoItem(title,descripton,dueDate,priority){
+    this.title = title;
+    this.descripton = descripton;
+    this.dueDate = dueDate;
+    this.priority = priority
+}

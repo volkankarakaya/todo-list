@@ -14,16 +14,21 @@
     --button-backgroun: #0ea5e9;
     --button-color:#f0f9ff;
     --icon-color:#334155;
+    --sidebar-item-hover-background:#0369a1;
+    --sidebar-item-hover-color:#cffafe;
+    --red-code:#f87171;
+    --orange-code:#fdba74;
+    --green-code:#a3e635;
 }
 
 body{
-    background: lightgray;
+    background: var(--main-background);
     font-size: 24px;
     font-family: 'Monserrat', 'Roboto', sans-serif;
     display: grid;
     grid-template: 120px 8fr/ 1fr 4fr;
     height: 100vh;
-    /* max-width: 1440px; */
+    max-width: 1440px;
     margin: 0 auto;
 }
 
@@ -36,6 +41,7 @@ header{
     padding-left: 16px;
     background: var(--header-background);
     color: var(--header-color) ;
+    
 }
 
 .sidebar{
@@ -46,11 +52,13 @@ header{
     display: flex;
     flex-direction: column;
     gap: 24px;
+    position: relative;
+    
 
 
 }
 
-.main{
+.item-container{
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -60,6 +68,10 @@ header{
 
 
 
+}
+.main{
+    display: flex;
+    flex-direction: column;
 }
 
 .item{
@@ -86,20 +98,20 @@ header{
     justify-content: space-between;
 }
 
-.main>:nth-child(1){
-    border-left: 6px solid red;
+.item-container>:nth-child(1){
+    border-left: 6px solid var(--red-code);
     border-radius: 3px;
     
 }
 
-.main>:nth-child(2){
-    border-left: 6px solid orange;
+.item-container>:nth-child(2){
+    border-left: 6px solid var(--orange-code);
     border-radius: 3px;
     
 }
 
-.main>:nth-child(3){
-    border-left: 6px solid green;
+.item-container>:nth-child(3){
+    border-left: 6px solid var(--green-code);
     border-radius: 3px;
     
 }
@@ -156,4 +168,88 @@ button:hover{
 
 .fa-trash-can:active{
     transform: scale(1.05);
+}
+
+.projects h3{
+    user-select: none; 
+}
+
+.projects ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: start;
+    gap: 8px;
+    margin-top: 16px;
+    user-select: none; 
+}
+
+.projects li{
+    margin-left: 36px;
+
+}
+
+.sidebar>h3:hover,.projects>h3:hover, .projects li:hover{
+    background: var(--sidebar-item-hover-background);
+    color: var(--sidebar-item-hover-color);
+    cursor: pointer;
+    border-radius: 8px;
+    padding:0px 12px;
+
+}
+
+.sidebar>h3:active,.projects>h3:active, .projects li:active{
+transform: scale(1.05);
+
+}
+
+.add-project-btn{
+    background-color: var(--header-background);
+    color: var(--header-color);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    font-size: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+    bottom: 180px;
+    left: 120px;
+
+    box-shadow: 1px 2px 2px 2px rgba(155, 190, 207, 0.62);
+    user-select: none; 
+    
+}
+
+.add-project-btn:hover{
+    cursor: pointer;
+    color: var(--header-background);
+    background: var(--header-color);
+    border: 2px solid var(--header-background);
+}
+
+.add-project-btn:active{
+    transform: scale(1.05);
+}
+
+.new-item{
+    background-color: #bae6fd;
+    color:var(--item-color);
+    padding: 16px;
+    border-radius: 6px;
+    user-select: none;
+    border-left:6px solid var(--item-color);
+
+}
+.new-item:hover{
+    cursor: pointer;
+    background-color: var(--header-background);
+    color:var(--header-color);
+    
+}
+
+.new-item:active{
+    transform: scale(1.01);
 }
