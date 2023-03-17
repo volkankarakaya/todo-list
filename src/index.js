@@ -16,3 +16,11 @@ function TodoItem(title,descripton,dueDate,priority){
     this.dueDate = dueDate;
     this.priority = priority
 }
+
+document.querySelector(".new-item").addEventListener("click",function(){
+    document.body.classList.add('active-form')
+})
+
+document.querySelector(".form #close-btn").addEventListener("click",function(){
+    document.body.classList.remove("active-form")
+})
