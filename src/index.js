@@ -24,15 +24,15 @@ document
   });
 
 const addTodoBtn = document.getElementById("add-todo-btn");
-
-const homeTodoList = [];
+const todoList = {}
+todoList.home = JSON.parse(localStorage.getItem("home")|| '[]');
 
 addTodoBtn.addEventListener("click", function (e) {
-  const titleValue = document.getElementById("title").value;
-  const dateValue = document.getElementById("dueDate").value;
-  const priorityValue = document.getElementById("priority").value;
-  const descriptonValue = document.getElementById("description").value;
-
+    const titleValue = document.getElementById("title").value;
+    const dateValue = document.getElementById("dueDate").value;
+    const priorityValue = document.getElementById("priority").value;
+    const descriptonValue = document.getElementById("description").value;
+    
   //create object
   e.preventDefault();
   let todoItem = new TodoItem(
@@ -41,12 +41,15 @@ addTodoBtn.addEventListener("click", function (e) {
     dateValue,
     priorityValue
   );
-  homeTodoList.push(todoItem);
-  console.log(homeTodoList);
+  // save item to LocalStorage
+  todoList.home.push(todoItem);
+  localStorage.setItem("home", JSON.stringify(todoList.home))
+  
+//   console.log(homeTodoList);
   //reset form values
   resetForm()
 
-  updateTodoList(homeTodoList)
+  updateTodoList(todoList.home)
 });
 
 function resetForm(){
@@ -83,3 +86,5 @@ function updateTodoList(todoList){
     });
 
 }
+
+window.addEventListener("load", updateTodoList(todoList.home))
