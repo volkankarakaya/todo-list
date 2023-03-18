@@ -18,10 +18,9 @@
     </header>
 
     <div class="sidebar">
-
-        <h3>Home</h3>
-        <h3>Today</h3>
-        <h3>Week</h3>
+      <h3>Home</h3>
+      <h3>Today</h3>
+      <h3>Week</h3>
 
       <div class="projects">
         <h3>Projects</h3>
@@ -32,9 +31,7 @@
         </ul>
       </div>
     </div>
-    <div class="add-project-btn">
-        +
-    </div>
+    <div class="add-project-btn">+</div>
 
     <div class="main">
       <div class="item-container">
@@ -50,7 +47,7 @@
             <i class="fa-solid fa-trash-can"></i>
           </div>
         </div>
-  
+
         <div class="item">
           <div class="item-name">
             <input type="checkbox" name="todo" id="" />
@@ -63,7 +60,7 @@
             <i class="fa fa-solid fa-trash-can"></i>
           </div>
         </div>
-  
+
         <div class="item">
           <div class="item-name">
             <input type="checkbox" name="todo" id="" />
@@ -76,8 +73,44 @@
             <i class="fa fa-solid fa-trash-can"></i>
           </div>
         </div>
-        <div class="new-item">
-          + Add new to-do
+      </div>
+      <div class="new-item">+ Add new to-do</div>
+
+      
+    </div>
+
+    <div class="form">
+      <button id="close-btn">x</button>
+      <h3>Enter Todo Details</h3>
+      <div class="form-items">
+        <div class="form-item">
+          <label for="title">Title: </label>
+          <input type="text" name="title" id="title" />
+        </div>
+        <div class="form-item">
+          <label for="description">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            cols="30"
+            rows="10"
+          ></textarea>
+        </div>
+        <div class="form-item">
+          <label for="dueDate">Due Date:</label>
+          <input type="date" name="dueDate" id="dueDate" />
+        </div>
+        <div class="form-item">
+          <label for="priority">Priority:</label>
+          <select name="priority" id="priority">
+            <option value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high">high</option>
+          </select>
+        </div>
+        <div class="add-todo-btn-container">
+          <button id="add-todo-btn" type="submit">Add</button>
+
         </div>
       </div>
     </div>

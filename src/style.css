@@ -102,19 +102,19 @@ header{
     justify-content: space-between;
 }
 
-.item-container>:nth-child(1){
+.item.high{
     border-left: 6px solid var(--red-code);
     border-radius: 3px;
     
 }
 
-.item-container>:nth-child(2){
+.item.medium{
     border-left: 6px solid var(--orange-code);
     border-radius: 3px;
     
 }
 
-.item-container>:nth-child(3){
+.item.low{
     border-left: 6px solid var(--green-code);
     border-radius: 3px;
     
@@ -308,7 +308,7 @@ body.active-form .form{
 
 .form-items{
     display: grid;
-    grid-template: 1fr 1fr 1fr/ 1fr 1fr;
+    grid-template: 1fr 1fr 1fr 1fr/ 1fr 1fr;
     gap:24px
     
 }
@@ -329,6 +329,24 @@ body.active-form .form{
     grid-row: 1/4;
     grid-column: 2/3;
 }
+
+.form-items .add-todo-btn-container{
+    grid-row: 4/5;
+    grid-column: 1/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+    
+}
+#add-todo-btn{
+    padding: 16px 32px;
+}
+
+
+
+
 
 
 .form-item>*{
@@ -354,4 +372,10 @@ input:focus, select:focus, textarea:focus{
     border-bottom: 2px solid var(--header-background);
 }
 
+textarea{
+    height: 80%;
+}
 
+label{
+    font-size: 0.9rem;
+}
