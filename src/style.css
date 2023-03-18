@@ -379,3 +379,16 @@ textarea{
 label{
     font-size: 0.9rem;
 }
+
+
+.save-project{
+    border:2px solid var(--header-background);
+    padding: 16px;
+    border-radius: 8px;
+    display: none;
+    margin-top: 24px;
+}
+
+.save-project.active{
+    display: block;
+}

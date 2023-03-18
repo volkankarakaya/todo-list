@@ -45,7 +45,7 @@ addTodoBtn.addEventListener("click", function (e) {
   todoList.home.push(todoItem);
   localStorage.setItem("home", JSON.stringify(todoList.home))
   
-//   console.log(homeTodoList);
+  console.log(todoList.home);
   //reset form values
   resetForm()
 
@@ -86,5 +86,11 @@ function updateTodoList(todoList){
     });
 
 }
+
+
+const addProjectBtn = document.querySelector(".add-project-btn");
+addProjectBtn.addEventListener("click", function(){
+    document.querySelector(".save-project").classList.toggle("active")
+})
 
 window.addEventListener("load", updateTodoList(todoList.home))
