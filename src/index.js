@@ -6,11 +6,15 @@ import "../node_modules/@fortawesome/fontawesome-free/js/all.js";
 const todoImg = document.getElementById("todoLogo");
 todoImg.src = todoLogo;
 
+let activeCategory = 'home';
+const homeBtn = document.getElementById('home')
+
 function TodoItem(title, descripton, dueDate, priority) {
   this.title = title;
   this.descripton = descripton;
   this.dueDate = dueDate;
   this.priority = priority;
+  this.category = activeCategory;
 }
 
 document.querySelector(".new-item").addEventListener("click", function () {
@@ -45,7 +49,7 @@ addTodoBtn.addEventListener("click", function (e) {
   todoList.home.push(todoItem);
   localStorage.setItem("home", JSON.stringify(todoList.home))
   
-  console.log(todoList.home);
+  // console.log(todoList.home);
   //reset form values
   resetForm()
 
@@ -93,4 +97,50 @@ addProjectBtn.addEventListener("click", function(){
     document.querySelector(".save-project").classList.toggle("active")
 })
 
-window.addEventListener("load", updateTodoList(todoList.home))
+window.addEventListener("load", updateTodoList(todoList.home));
+
+
+
+
+
+todoList.projects = JSON.parse(localStorage.getItem("projects")||"{}")
+const saveProjectBtn = document.querySelector(".save-project button")
+
+
+saveProjectBtn.addEventListener("click", function(){
+    const projectInputValue = document.querySelector(".save-project input").value;
+    const saveProjectContainer = document.querySelector(".save-project");
+    saveProjectContainer.classList.remove("active");
+
+
+    todoList.projects[projectInputValue] = [] 
+    localStorage.setItem("projects",JSON.stringify(todoList.projects)||{}) || {};
+
+    console.log(todoList.projects)
+    updateProjectList(todoList.projects)
+    
+})
+
+
+function updateProjectList(projects){
+  const projectList = document.querySelector('.projects ul');
+  projectList.innerHTML = ""
+  Object.keys(projects).forEach(key=>{
+    const newItem = document.createElement('li');
+    newItem.textContent = key
+    projectList.appendChild(newItem)
+  })
+
+
+}
+
+window.addEventListener("load", updateProjectList(todoList.projects));
+
+const projectListItems = document.querySelectorAll(".projects li");
+projectListItems.forEach(project=>{
+  project.addEventListener("click", function(){
+    const projectList = todoList.projects[project];
+    updateTodoList(projectList);
+
+  })
+})
