@@ -4,7 +4,7 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 import "../node_modules/@fortawesome/fontawesome-free/js/all.js";
 import { UserInterface} from "./interface";
 import { Task } from "./assets/task.js";
-import{saveTaskToLocalStorage, getTasks, removeTask} from "./localStorage"
+import{saveTaskToLocalStorage, getTasks, removeTask} from "./local_storage.js"
 
 
 const todoImg = document.getElementById("todoLogo");
@@ -48,25 +48,9 @@ addTodoBtn.addEventListener("click", function(){
 })
 
 
-const removeBtns = document.querySelectorAll(".item-delete-btn")
-removeBtns.forEach(function(btn){
-  btn.addEventListener("click",function(e){
-    
-    let id = e.target.parentElement.parentElement.parentElement.id;
-    let tasks = getTasks();
-    
-    
 
 
-    for (let x of tasks){
-      if(id == x.id){
-        console.log(id)
-      }
-    }
-
-  })  
-})
-// console.log(removeBtns)
+UserInterface.removeTodo()
 
 function createTaskItem(){
   

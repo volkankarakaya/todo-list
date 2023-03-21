@@ -131,10 +131,10 @@ button{
 }
 
 
-button:active{
+/* button:active{
     transform: scale(1.04);
     color:var(--header-background);
-}
+} */
 
 button:hover{
     cursor: pointer;
@@ -170,9 +170,9 @@ button:hover{
     color:var(--button-backgroun)
 }
 
-.fa-trash-can:active{
+/* .fa-trash-can:active{
     transform: scale(1.05);
-}
+} */
 
 .projects h3{
     user-select: none; 
@@ -391,4 +391,12 @@ label{
 
 .save-project.active{
     display: block;
+}
+
+button>i{
+    pointer-events: none;
+}
+
+.item.fall{
+    display: none;
 }
