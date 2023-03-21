@@ -3,8 +3,8 @@ import "./style.css";
 import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 import "../node_modules/@fortawesome/fontawesome-free/js/all.js";
 import { UserInterface} from "./interface";
-import { Task } from "./assets/tasks";
-import { indexOf } from "lodash";
+import { Task } from "./assets/task.js";
+
 
 const todoImg = document.getElementById("todoLogo");
 todoImg.src = todoLogo;

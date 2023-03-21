@@ -1,17 +1,7 @@
 
 
-// function Task(title, descripton, dueDate, priority) {
-//     this.title = title;
-//     this.descripton = descripton;
-//     this.dueDate = dueDate;
-//     this.priority = priority;
-//     this.category = activeCategory;
-//     let now = new Date();
-//     this.id = now.getTime();
-//   }
 
-
-class Task{
+export class Task{
     
     constructor(title,descripton,dueDate,priority,activeCategory,checked){
         this.title = title;
@@ -24,4 +14,3 @@ class Task{
     }
 }
 
-export {Task}
