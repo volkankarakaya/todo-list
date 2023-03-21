@@ -2,13 +2,17 @@ import todoLogo from "./assets/to-do-list.png";
 import "./style.css";
 import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 import "../node_modules/@fortawesome/fontawesome-free/js/all.js";
-import { forEach, indexOf } from "lodash";
+import { UserInterface} from "./interface";
+import { Task } from "./assets/tasks";
+import { indexOf } from "lodash";
 
 const todoImg = document.getElementById("todoLogo");
 todoImg.src = todoLogo;
 
+UserInterface.renderHTML(getTasks())
 
-let tasks = JSON.parse(localStorage.getItem('tasks'))
+
+let tasks = getTasks()
 
 function saveTaskToLocalStorage(task){
   let tasks;
@@ -22,31 +26,36 @@ function saveTaskToLocalStorage(task){
   localStorage.setItem("tasks",JSON.stringify(tasks))
 }
 
+function getTasks(){
+  let tasks;
+  if(localStorage.getItem("tasks")===null){
+    tasks = []
+  }else{
+    tasks = JSON.parse(localStorage.getItem("tasks"))
+  }
+  return tasks
+}
+
+
+function removeTask(index){
+  let tasks = getTasks();
+  if(localStorage.getItem("tasks")===null){
+    tasks= [];
+  }else{
+    tasks = JSON.parse(localStorage.getItem("tasks"))
+  }
+  tasks.splice(index,1)
+  localStorage.setItem("tasks", JSON.stringify(tasks))
+}
+
 
 
 
 
 
 let activeCategory = "home";
-// const homeBtn = document.getElementById("home");
-// const projectsBtn = document.querySelector(".projects h3");
-// homeBtn.addEventListener("click", function () {
-//   activeCategory = "home";
-//   updateTodoList(tasks);
-// });
-// projectsBtn.addEventListener("click", function () {
-//   activeCategory = "projects";
-// });
 
-function Task(title, descripton, dueDate, priority) {
-  this.title = title;
-  this.descripton = descripton;
-  this.dueDate = dueDate;
-  this.priority = priority;
-  this.category = activeCategory;
-  let now = new Date();
-  this.id = now.getTime();
-}
+
 
 document.querySelector(".new-item").addEventListener("click", function () {
   document.body.classList.add("active-form");
@@ -60,72 +69,61 @@ document
 
 const addTodoBtn = document.getElementById("add-todo-btn");
 
-// todoList.home = JSON.parse(localStorage.getItem("home"));
 
-addTodoBtn.addEventListener("click", function (e) {
-  const titleValue = document.getElementById("title").value;
-  const dateValue = document.getElementById("dueDate").value;
-  const priorityValue = document.getElementById("priority").value;
-  const descriptonValue = document.getElementById("description").value;
 
-  //create object
-  e.preventDefault();
-  let task = new Task(
-    titleValue,
-    descriptonValue,
-    dateValue,
-    priorityValue
-  );
-  // save item to LocalStorage
-  saveTaskToLocalStorage(task)
-
-  // console.log(todoList.home);
-  //reset form values
-  // resetForm();
-
-  // updateTodoList(tasks);
-
- 
+addTodoBtn.addEventListener("click", createTaskItem);
+addTodoBtn.addEventListener("click", UserInterface.resetForm);
+addTodoBtn.addEventListener("click", function(){
+  UserInterface.renderHTML(getTasks())
 });
+addTodoBtn.addEventListener("click", function(){
+  document.body.classList.remove("active-form")
+})
 
-// function resetForm() {
-//   const titleValue = (document.getElementById("title").value = "");
-//   const dateValue = (document.getElementById("dueDate").value = "");
-//   const priorityValue = (document.getElementById("priority").value = "");
-//   const descriptonValue = (document.getElementById("description").value = "");
-// }
 
-// function updateTodoList(list) {
-//   const itemContainer = document.querySelector(".item-container");
-//   itemContainer.innerHTML = "";
+const removeBtns = document.querySelectorAll(".item-delete-btn")
+removeBtns.forEach(function(btn){
+  btn.addEventListener("click",function(e){
+    
+    let id = e.target.parentElement.parentElement.parentElement.id;
+    let tasks = getTasks();
+    
+    
 
-//   list.forEach((element) => {
-//     const htmlItem = document.createElement("div");
-//     // htmlItem.setAttribute('class',);
-//     htmlItem.setAttribute("class", "item " + element.priority);
-//     htmlItem.setAttribute("id", element.id);
-//     htmlItem.innerHTML = `<div class="item-name">
-//           <input type="checkbox" name="todo" id="${element.id}" />
-//           <p>${element.title}</p>
-//         </div>
-//         <div class="item-info">
-//           <button>Details</button>
-//           <p>${element.dueDate}</p>
-//           <div class = "item-edit-btn">
-//           <i class="fa fa-regular fa-pen-to-square"></i>
-//            </div>
-//           <div class = "item-delete-btn">
-//           <i class="fa fa-solid fa-trash-can"></i>          
-//           </div>
 
-//         </div>
-//       </div>`;
+    for (let x of tasks){
+      if(id == x.id){
+        console.log(id)
+      }
+    }
 
-//     if (element.category === activeCategory) {
-//       itemContainer.appendChild(htmlItem);
-//     }
-//   });
-// }
+  })  
+})
+// console.log(removeBtns)
+
+function createTaskItem(){
+  
+    const titleValue = document.getElementById("title").value;
+    const dateValue = document.getElementById("dueDate").value;
+    const priorityValue = document.getElementById("priority").value;
+    const descriptonValue = document.getElementById("description").value;
+  
+   
+    let task = new Task(
+      titleValue,
+      descriptonValue,
+      dateValue,
+      priorityValue
+    );
+    // save item to LocalStorage
+    saveTaskToLocalStorage(task)  
+  
+  
+}
+
+
+
+
 
 // const addProjectBtn = document.querySelector(".add-project-btn");
 // addProjectBtn.addEventListener("click", function () {
