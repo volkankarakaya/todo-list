@@ -393,9 +393,6 @@ label{
     display: block;
 }
 
-button>i{
-    pointer-events: none;
-}
 
 .item.fall{
     display: none;

@@ -1,6 +1,7 @@
 import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 import "../node_modules/@fortawesome/fontawesome-free/js/all.js";
 import trashCan from "./assets/trash-can-regular.svg"
+import { removeTaskFromStorage } from "./local_storage";
 const trashCanIcon = document.querySelectorAll(".trash-can")
 trashCanIcon.src = trashCan
 
@@ -19,10 +20,10 @@ class UserInterface {
         <button>Details</button>
         <p>${element.dueDate}</p>
         <button class = "item-edit-btn">
-        <i class="fa fa-regular fa-pen-to-square"></i>
+        Edit
          </button>
-        <button class = "item-delete-btn">
-        <img class="trash-can" src=${trashCan} width="20px"/>     
+        <button class = "trash-can">
+      delete
         </button>
 
       </div>
@@ -34,6 +35,9 @@ class UserInterface {
 
   }
 
+  // <img class="trash-can" src=${trashCan} width="20px"/> 
+  //<i class="fa fa-regular fa-pen-to-square"></i>
+
   static resetForm() {
     const titleValue = (document.getElementById("title").value = "");
     const dateValue = (document.getElementById("dueDate").value = "");
@@ -42,13 +46,16 @@ class UserInterface {
   }
 
   static removeTodo(){
-    const deleteBtns = document.querySelectorAll(".item-delete-btn");
+    const deleteBtns = document.querySelectorAll(".trash-can");
     deleteBtns.forEach(deleteBtn=>{
       deleteBtn.addEventListener("click",(e)=>{
         const itemContainer = e.target.parentElement.parentElement;
         itemContainer.classList.add("fall")
+        console.log(deleteBtn)
+        removeTaskFromStorage(e)
       })
     })
+    
 
   }
 }
