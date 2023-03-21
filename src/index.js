@@ -4,6 +4,7 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 import "../node_modules/@fortawesome/fontawesome-free/js/all.js";
 import { UserInterface} from "./interface";
 import { Task } from "./assets/task.js";
+import{saveTaskToLocalStorage, getTasks, removeTask} from "./localStorage"
 
 
 const todoImg = document.getElementById("todoLogo");
@@ -13,40 +14,6 @@ UserInterface.renderHTML(getTasks())
 
 
 let tasks = getTasks()
-
-function saveTaskToLocalStorage(task){
-  let tasks;
-  if(localStorage.getItem('tasks') === null){
-    tasks = [];
-  }else{
-    tasks = JSON.parse(localStorage.getItem("tasks"))
-  }
-  tasks.push(task);
-  console.log(tasks)
-  localStorage.setItem("tasks",JSON.stringify(tasks))
-}
-
-function getTasks(){
-  let tasks;
-  if(localStorage.getItem("tasks")===null){
-    tasks = []
-  }else{
-    tasks = JSON.parse(localStorage.getItem("tasks"))
-  }
-  return tasks
-}
-
-
-function removeTask(index){
-  let tasks = getTasks();
-  if(localStorage.getItem("tasks")===null){
-    tasks= [];
-  }else{
-    tasks = JSON.parse(localStorage.getItem("tasks"))
-  }
-  tasks.splice(index,1)
-  localStorage.setItem("tasks", JSON.stringify(tasks))
-}
 
 
 
