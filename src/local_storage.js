@@ -74,6 +74,30 @@ function saveTaskToLocalStorage(task){
     localStorage.setItem('tasks',JSON.stringify(tasks))
 
   }
+
+  export function saveProjectToLocalStorage(project){
+    let projects;
+    if(localStorage.getItem("projects")===null){
+      projects=[]
+    }else{
+      projects = JSON.parse(localStorage.getItem("projects"))
+    }
+    projects.push(project);
+    localStorage.setItem("projects", JSON.stringify(projects))
+    console.log(projects)
+
+  }
+
+  export function getProjectsFromLocalStorage(){
+    let projects;
+    if(localStorage.getItem("projects")===null){
+      projects = [];
+    }else{
+      projects = JSON.parse(localStorage.getItem("projects"));
+
+    }
+    return projects
+  }
   
 
   export{saveTaskToLocalStorage, getTasks, removeTaskFromStorage, getTodoItem}

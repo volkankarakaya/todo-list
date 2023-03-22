@@ -10,17 +10,22 @@ import{saveTaskToLocalStorage, getTasks, removeTask} from "./local_storage.js"
 const todoImg = document.getElementById("todoLogo");
 todoImg.src = todoLogo;
 
+
+
+
+
+const homeBtn = document.getElementById("home");
+const projectsBtn = document.querySelector(".projects h3");
+
+
 UserInterface.renderHTML(getTasks())
 
 
-let tasks = getTasks()
 
 
 
 
 
-
-let activeCategory = "home";
 
 
 
@@ -49,6 +54,14 @@ addTodoBtn.addEventListener("click", function(){
 
 UserInterface.removeTodo();
 UserInterface.editTodo();
+UserInterface.addProject();
+UserInterface.renderProjectsHTML();
+UserInterface.setActiveCategory();
+
+homeBtn.addEventListener("click",UserInterface.filterCategory);
+projectsBtn.addEventListener("click",UserInterface.filterCategory);
+
+
 
 function createTaskItem(){
   
@@ -56,13 +69,15 @@ function createTaskItem(){
     const dateValue = document.getElementById("dueDate").value;
     const priorityValue = document.getElementById("priority").value;
     const descriptonValue = document.getElementById("description").value;
+    const activeCategory = UserInterface.activeCategory
   
    
     let task = new Task(
       titleValue,
       descriptonValue,
       dateValue,
-      priorityValue
+      priorityValue,
+      activeCategory
     );
     // save item to LocalStorage
     saveTaskToLocalStorage(task)  
