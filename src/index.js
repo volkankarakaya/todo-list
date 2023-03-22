@@ -24,15 +24,12 @@ let activeCategory = "home";
 
 
 
-document.querySelector(".new-item").addEventListener("click", function () {
-  document.body.classList.add("active-form");
-});
+document.querySelector(".new-item").addEventListener("click", UserInterface.toggleForm);
 
 document
   .querySelector(".form #close-btn")
-  .addEventListener("click", function () {
-    document.body.classList.remove("active-form");
-  });
+  .addEventListener("click", UserInterface.toggleForm
+  );
 
 const addTodoBtn = document.getElementById("add-todo-btn");
 
@@ -50,7 +47,8 @@ addTodoBtn.addEventListener("click", function(){
 
 
 
-UserInterface.removeTodo()
+UserInterface.removeTodo();
+UserInterface.editTodo();
 
 function createTaskItem(){
   

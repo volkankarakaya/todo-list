@@ -40,7 +40,41 @@ function saveTaskToLocalStorage(task){
     }
     localStorage.setItem('tasks',JSON.stringify(tasks))
   }
+
+  function getTodoItem(id){
+    let tasks;
+    if(localStorage.getItem("tasks")===null){
+      tasks =[]
+    }else{
+      tasks = JSON.parse(localStorage.getItem("tasks"))
+    }
+    for(let x in tasks){
+      if(tasks[x].id == id){
+        return tasks[x]
+      }
+    }
+  }
+
+  export function updateTodoItem(id,title,date,priority){
+    let tasks;
+    if (localStorage.getItem("tasks")===null){
+      tasks={}
+    }else{
+      tasks = JSON.parse(localStorage.getItem("tasks"))
+    }
+    for(let x in tasks){
+      if(tasks[x].id==id){
+        
+        tasks[x].title =title;
+        tasks[x].dueDate = date;
+        tasks[x].priority = priority;
+        console.log(tasks[x])
+      }
+    }
+    localStorage.setItem('tasks',JSON.stringify(tasks))
+
+  }
   
 
-  export{saveTaskToLocalStorage, getTasks, removeTaskFromStorage}
+  export{saveTaskToLocalStorage, getTasks, removeTaskFromStorage, getTodoItem}
   
