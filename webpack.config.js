@@ -4,13 +4,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode:"development",
     entry: {
-        index:'./src/index.js',
-        // print: './src/print.js'
+        index:path.resolve(__dirname,'src/index.js'),
+       
     },
     devtool: 'inline-source-map',
     devServer: {
         static:'./dist',
-        port:3000
+        port:3000,
+        open:true,
+        compress:true,
+        historyApiFallback:true
     },
 
     plugins:[
@@ -24,7 +27,6 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname,'dist'),
         clean:true,
-        publicPath:'/',
         assetModuleFilename:'[name][ext]'
     },
     optimization:{
@@ -34,7 +36,12 @@ module.exports = {
     module:{
         rules:[
             {
+                test: /\.css$/i,
+                use: [ 'style-loader','css-loader'],
+            },
+            {
                 test:/\.js/,
+                exclude:/node_modules/,
                 use:{
                     loader:'babel-loader',
                     options:{
@@ -42,10 +49,7 @@ module.exports = {
                     }
                 }
             },
-            {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
-            },
+            
             {
                 test:/\.(png|svg|jpg|jpeg|gif)$/i,
                 type:'asset/resource'

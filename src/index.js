@@ -1,9 +1,9 @@
-import todoLogo from "./assets/to-do-list.png";
 import "./style.css";
-import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
-import "../node_modules/@fortawesome/fontawesome-free/js/all.js";
+import todoLogo from "./assets/to-do-list.png";
+// import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+// import "../node_modules/@fortawesome/fontawesome-free/js/all.js";
 import { UserInterface} from "./interface";
-import { Task } from "./assets/task.js";
+import { Task } from "./task.js";
 import{saveTaskToLocalStorage, getTasks, removeTask} from "./local_storage.js"
 
 
@@ -61,6 +61,8 @@ UserInterface.filterCategory()
 
 UserInterface.setActiveCategory();
 UserInterface.removeProject();
+UserInterface.removeTodo();
+UserInterface.editTodo();
 
 homeBtn.addEventListener("click",UserInterface.filterCategory);
 projectsBtn.addEventListener("click",UserInterface.filterCategory);
