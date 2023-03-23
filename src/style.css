@@ -189,7 +189,10 @@ button:hover{
 }
 
 .projects li{
+    width: 240px;
     margin-left: 36px;
+    display: flex;
+    justify-content: space-between;
 
 }
 
@@ -398,4 +401,13 @@ label{
 
 .item.fall{
     display: none;
+}
+
+.right-project-panel{
+    visibility: hidden;
+
+}
+
+li:hover .right-project-panel{
+    visibility: visible;
 }

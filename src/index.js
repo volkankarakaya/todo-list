@@ -43,7 +43,8 @@ const addTodoBtn = document.getElementById("add-todo-btn");
 addTodoBtn.addEventListener("click", createTaskItem);
 addTodoBtn.addEventListener("click", UserInterface.resetForm);
 addTodoBtn.addEventListener("click", function(){
-  UserInterface.renderHTML(getTasks())
+  UserInterface.renderHTML(getTasks());
+  UserInterface.filterCategory()
 });
 addTodoBtn.addEventListener("click", function(){
   document.body.classList.remove("active-form")
@@ -56,7 +57,10 @@ UserInterface.removeTodo();
 UserInterface.editTodo();
 UserInterface.addProject();
 UserInterface.renderProjectsHTML();
+UserInterface.filterCategory()
+
 UserInterface.setActiveCategory();
+UserInterface.removeProject();
 
 homeBtn.addEventListener("click",UserInterface.filterCategory);
 projectsBtn.addEventListener("click",UserInterface.filterCategory);

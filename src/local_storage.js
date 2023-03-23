@@ -1,3 +1,4 @@
+import { indexOf } from "lodash";
 
 
 function saveTaskToLocalStorage(task){
@@ -99,6 +100,18 @@ function saveTaskToLocalStorage(task){
     return projects
   }
   
+  export function deleteProjectFromLocalStorage(project){
+    let projects;
+    if(localStorage.getItem("projects")===null){
+      projects =[]
+    }else{
+      projects = JSON.parse(localStorage.getItem("projects"))
+    }
+    projects.splice(indexOf(project),1)
+    localStorage.setItem("projects",JSON.stringify(projects))
+    console.log("deleted")
+  }
+
 
   export{saveTaskToLocalStorage, getTasks, removeTaskFromStorage, getTodoItem}
   

@@ -6,7 +6,8 @@ import {
   removeTaskFromStorage,
   updateTodoItem,
   saveProjectToLocalStorage,
-  getProjectsFromLocalStorage
+  getProjectsFromLocalStorage,
+  deleteProjectFromLocalStorage
 } from "./local_storage";
 const trashCanIcon = document.querySelectorAll(".trash-can");
 trashCanIcon.src = trashCan;
@@ -160,8 +161,9 @@ class UserInterface {
 
     subProjectBtns.forEach((btn)=>{
       btn.addEventListener("click",()=>{
-        this.activeCategory= btn.innerText;
-        console.log(this.activeCategory)
+        this.activeCategory= btn.children[0].innerText;
+        console.log(this.activeCategory);
+        UserInterface.filterCategory();
         
 
       })
@@ -183,7 +185,7 @@ class UserInterface {
         activeCategoryList.push(tasks[x]);
       }
     }
-    console.log(activeCategoryList);
+    // console.log(activeCategoryList);
     UserInterface.renderHTML(activeCategoryList);
   }
 
@@ -207,10 +209,23 @@ class UserInterface {
     let projects = getProjectsFromLocalStorage();
     let projectContainer = document.querySelector(".projects ul")
     let projectHTML = projects.map(project=>{
-      return '<li>'+project+'</li>'
+      return '<li><div class="left-project-panel">'+project+'</div><div class="right-project-panel">x</div></li>'
     }).join("")
     projectContainer.innerHTML = projectHTML
 
+  }
+
+  static removeProject(){
+    const deleteProjectBtns = document.querySelectorAll(".right-project-panel");
+    deleteProjectBtns.forEach(btn=>{
+      btn.addEventListener("click", (e)=>{
+        e.target.parentElement.style.visibility = "collapse"
+        let project = e.target.parentElement.children[0].innerText
+        deleteProjectFromLocalStorage(project);
+
+      })
+    })
+    console.log(deleteProjectBtns)
   }
 }
 
